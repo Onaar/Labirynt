@@ -48,5 +48,18 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         characterController.Move(move * speed * Time.deltaTime);
+        ApplyGravity();
+    }
+    private void ApplyGravity()
+    {
+        characterController.Move(Physics.gravity * Time.deltaTime);
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "Pickup")
+        {
+            Pickup pickup = hit.gameObject.GetComponent<Pickup>();
+            if (pickup != null) pickup.Picked();
+        }
     }
 }
