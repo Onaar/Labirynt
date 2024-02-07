@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public void Picked()
+    public virtual void Picked()
     {
         Debug.Log("Picked");
         Destroy(gameObject);

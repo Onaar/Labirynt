@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField]
-    int timeToEnd;
+    int timeToEnd, points = 0, redKey = 0, greenKey = 0, goldKey = 0;
     [SerializeField]
     KeyCode pauseKey = KeyCode.P;
     bool isGamePaused, endGame, win; // bool isGamePaused = false; // the same
@@ -58,5 +58,36 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game resumed");
         Time.timeScale = 1f;
         isGamePaused =  false;
+    }
+    public void AddPoints(int point = 1)
+    {
+        points += point;
+    }
+    public void AddTime(int addTime)
+    {
+        timeToEnd += addTime;
+    }
+    public void FreezeTime(int freezeTime)
+    {
+        CancelInvoke("Timer");
+        InvokeRepeating("Timer", freezeTime, 1);
+    }
+    public void AddKey(KeyColor keyColor)
+    {
+        switch (keyColor)
+        {
+            case KeyColor.Red:
+                redKey++;
+                break;
+            case KeyColor.Gold:
+                goldKey++;
+                break;
+            case KeyColor.Green:
+                greenKey++;
+                break;
+            default:
+                Debug.LogWarning($"KeyColor: {keyColor} is not supported;");
+                break;
+        }
     }
 }
