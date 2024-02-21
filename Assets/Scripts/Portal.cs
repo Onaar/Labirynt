@@ -14,6 +14,7 @@ public class Portal : MonoBehaviour
 
     private GameObject player;
     private PortalTeleport portalTeleport;
+    private PortalCamera portalCamera;
 
     private void Awake()
     {
@@ -22,6 +23,11 @@ public class Portal : MonoBehaviour
         portalTeleport = portalCollider.GetComponent<PortalTeleport>();
         portalTeleport.player = player.transform;
         portalTeleport.receiver = otherPortal.portalCollider;
+
+        portalCamera = myCamera.GetComponent<PortalCamera>();
+        portalCamera.playerCamera = player.GetComponentInChildren<Camera>().transform;
+        portalCamera.portal = transform;
+        portalCamera.otherPortal = otherPortal.transform;
 
         renderSurface.GetComponent<Renderer>().material = Instantiate(material);
         if (myCamera.targetTexture != null)

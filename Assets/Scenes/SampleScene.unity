@@ -1803,6 +1803,18 @@ PrefabInstance:
       propertyPath: otherPortal
       value: 
       objectReference: {fileID: 677471524}
+    - target: {fileID: 5604932843634083250, guid: e85becbada19b2d4090fa466343c417b, type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604932843634083250, guid: e85becbada19b2d4090fa466343c417b, type: 3}
+      propertyPath: otherPortal
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604932843634083250, guid: e85becbada19b2d4090fa466343c417b, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2639,6 +2651,18 @@ PrefabInstance:
       propertyPath: otherPortal
       value: 
       objectReference: {fileID: 1164165855}
+    - target: {fileID: 5604932843634083250, guid: e85becbada19b2d4090fa466343c417b, type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604932843634083250, guid: e85becbada19b2d4090fa466343c417b, type: 3}
+      propertyPath: otherPortal
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604932843634083250, guid: e85becbada19b2d4090fa466343c417b, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
