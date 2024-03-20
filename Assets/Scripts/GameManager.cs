@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField]
-    int timeToEnd, points = 0, redKey = 0, greenKey = 0, goldKey = 0;
+    public int timeToEnd, points = 0, redKey = 0, greenKey = 0, goldKey = 0;
     [SerializeField]
     KeyCode pauseKey = KeyCode.P;
     bool isGamePaused, endGame, win; // bool isGamePaused = false; // the same
