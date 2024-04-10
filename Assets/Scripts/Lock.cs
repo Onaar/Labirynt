@@ -9,6 +9,8 @@ public class Lock : MonoBehaviour
     public KeyColor myColor;
     bool locked = false;
     Animator animator;
+    [SerializeField]
+    KeyCode interactionKey = KeyCode.E;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +31,13 @@ public class Lock : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(interactionKey) && iCanOpen && !locked)
+        {
+            animator.SetBool("useKey", CheckTheKey());
+        }
     }
     public void UseKey()
     {

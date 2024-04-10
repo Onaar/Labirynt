@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     KeyCode pauseKey = KeyCode.P;
     bool isGamePaused, endGame, win; // bool isGamePaused = false; // the same
+    AudioSource audioSource;
+    public AudioClip pauseClip, resumeClip, winClip, loseClip, pickedClip;
 
     private void Start()
     {
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
         if (timeToEnd <= 0)
             timeToEnd = 90;
 
+        audioSource = GetComponent<AudioSource>();
         InvokeRepeating("Timer", 1f, 1f);
     }
     private void Timer()

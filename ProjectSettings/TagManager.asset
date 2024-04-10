@@ -7,6 +7,8 @@ TagManager:
   - Low
   - High
   - Pickup
+  - Wall
+  - LevelGenerator
   layers:
   - Default
   - TransparentFX
