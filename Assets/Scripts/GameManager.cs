@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     bool isGamePaused, endGame, win; // bool isGamePaused = false; // the same
     AudioSource audioSource;
     public AudioClip pauseClip, resumeClip, winClip, loseClip, pickedClip;
+    MusicManager musicManager;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
             timeToEnd = 90;
 
         audioSource = GetComponent<AudioSource>();
+        musicManager = FindObjectOfType<MusicManager>();
         InvokeRepeating("Timer", 1f, 1f);
     }
     private void Timer()
@@ -37,8 +39,15 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     { 
         CancelInvoke("Timer");
-        if (win) Debug.Log("You win!");
-        else Debug.Log("You lose!");
+        if (win)
+        {
+            Debug.Log("You win!");
+            PlayClip(winClip);
+        }
+        else { 
+            Debug.Log("You lose!");
+            PlayClip(loseClip);
+        }
     }
     private void Update()
     {
@@ -53,14 +62,18 @@ public class GameManager : MonoBehaviour
     private void PauseGame()
     {
         Debug.Log("Game paused");
+        PlayClip(pauseClip);
         Time.timeScale = 0f;
         isGamePaused = true;
+        musicManager.OnPauseGame();
     }
     private void ResumeGame()
     {
         Debug.Log("Game resumed");
+        PlayClip(resumeClip);
         Time.timeScale = 1f;
         isGamePaused =  false;
+        musicManager.OnResumeGame();
     }
     public void AddPoints(int point = 1)
     {
@@ -92,5 +105,10 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning($"KeyColor: {keyColor} is not supported;");
                 break;
         }
+    }
+    public void PlayClip(AudioClip audioClip)
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
 }

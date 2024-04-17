@@ -12,6 +12,7 @@ public class EditorButton : Editor
         LevelGenerator generator = (LevelGenerator)target;
         if(GUILayout.Button("Create Labirynth"))
         {
+            generator.RemoveLabirynth();
             generator.GenerateLabirynth();
         }
         if(GUILayout.Button("Remove Labirynth"))

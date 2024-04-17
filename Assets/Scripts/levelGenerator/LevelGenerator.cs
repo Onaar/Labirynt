@@ -12,11 +12,16 @@ public class LevelGenerator : MonoBehaviour
 
     public void RemoveLabirynth()
     {
-        foreach (Transform child in transform)
+        //foreach (Transform child in transform)
+        //{
+        //    if (child.tag == "LevelGenerator")
+        //        continue;
+        //    DestroyImmediate(child.gameObject);
+        //}
+
+        while (transform.childCount > 0)
         {
-            if (child.tag == "LevelGenerator")
-                continue;
-            DestroyImmediate(child.gameObject);
+            DestroyImmediate(transform.GetChild(0).gameObject);
         }
     }
     public void GenerateLabirynth()
