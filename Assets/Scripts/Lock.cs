@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class Lock : MonoBehaviour
     Animator animator;
     [SerializeField]
     KeyCode interactionKey = KeyCode.E;
+    [SerializeField]
+    Material redMat, greenMat, goldMat;
+    [SerializeField]
+    Renderer myLock;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,6 +36,32 @@ public class Lock : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        SetMyColor();
+    }
+    private void SetMyColor()
+    {
+        switch (myColor)
+        {
+            case KeyColor.Red:
+                myLock.material = redMat;
+                SetKeyMaterial(redMat);
+                break;
+            case KeyColor.Green:
+                myLock.material = greenMat;
+                SetKeyMaterial(greenMat);
+                break;
+            case KeyColor.Gold:
+                myLock.material = goldMat;
+                SetKeyMaterial(goldMat);
+                break;
+        }
+    }
+    private void SetKeyMaterial(Material targetMat)
+    {
+        Renderer keyRend = GetComponent<Renderer>();
+        Material[] materials = keyRend.materials;
+        materials[1] = targetMat;
+        keyRend.materials = materials;
     }
     private void Update()
     {
