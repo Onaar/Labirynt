@@ -22,7 +22,11 @@ public class Lock : MonoBehaviour
         if (other.tag == "Player")
         {
             iCanOpen = true;
-            Debug.Log("You can use the lock!");
+            if (!locked)
+            {
+                GameManager.instance.SetGamePanelActiveness(true);
+                Debug.Log("You can use the lock!");
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -30,6 +34,7 @@ public class Lock : MonoBehaviour
         if (other.tag == "Player")
         {
             iCanOpen = false;
+            GameManager.instance.SetGamePanelActiveness(false);
             Debug.Log("You cannot use the lock!");
         }
     }
@@ -79,18 +84,21 @@ public class Lock : MonoBehaviour
         if(GameManager.instance.redKey > 0 && myColor == KeyColor.Red)
         {
             GameManager.instance.redKey--;
+            GameManager.instance.UpdateKeysText(myColor);
             locked = true;
             return true;
         }
         else if(GameManager.instance.greenKey > 0 && myColor == KeyColor.Green)
         {
             GameManager.instance.greenKey--;
+            GameManager.instance.UpdateKeysText(myColor);
             locked = true;
             return true;
         }
         else if(GameManager.instance.goldKey > 0 && myColor == KeyColor.Gold)
         {
             GameManager.instance.goldKey--;
+            GameManager.instance.UpdateKeysText(myColor);
             locked = true;
             return true;
         }

@@ -3,7 +3,15 @@ guid: e1eaec6a788d3484085fde7210472b1d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pauseClip: {instanceID: 0}
+  - resumeClip: {instanceID: 0}
+  - winClip: {instanceID: 0}
+  - loseClip: {instanceID: 0}
+  - pickedClip: {instanceID: 0}
+  - normalProfile: {instanceID: 0}
+  - shortOnTimeProfile: {instanceID: 0}
+  - volume: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

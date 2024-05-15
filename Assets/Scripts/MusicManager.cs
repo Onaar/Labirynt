@@ -38,4 +38,8 @@ public class MusicManager : MonoBehaviour
         audioSource.PlayScheduled(pauseClipTime);
         pauseClipTime = -1f;
     }
+    public void ChangePitch(float pitch)
+    {
+        audioSource.pitch = pitch;
+    }
 }
