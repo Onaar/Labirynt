@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
             timeToEnd = 90;
         
         InitUI();
+        Time.timeScale = 1f;
 
         volume.profile = normalProfile;
 
@@ -80,9 +82,16 @@ public class GameManager : MonoBehaviour
             isLessTimeEffectOn = false;
         }
     }
+    public void WinGame()
+    {
+        win = true;
+        endGame = true;
+        EndGame();
+    }
     private void EndGame()
     { 
         CancelInvoke("Timer");
+        Time.timeScale = 0f;
         if (win)
         {
             Debug.Log("You win!");
@@ -100,6 +109,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckGamePause();
+        if (endGame)
+        {
+            if (Input.GetKeyDown(KeyCode.Y))
+                SceneManager.LoadScene(0);
+            if (Input.GetKeyDown(KeyCode.N))
+                Application.Quit();
+        }
     }
     private void CheckGamePause()
     {
